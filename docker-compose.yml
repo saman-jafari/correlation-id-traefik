@@ -1,9 +1,7 @@
-version: "3.3"
-
 services:
 
   traefik:
-    image: "traefik:v2.10"
+    image: "traefik:v3.7"
     container_name: "traefik"
     command:
 #      - "--log.level=DEBUG"
@@ -12,7 +10,7 @@ services:
       - "--providers.docker.exposedbydefault=false"
       - "--experimental.localPlugins.correlation.moduleName=github.com/saman-jafari/correlation-id-traefik"
 #      - "--experimental.plugins.correlation.moduleName=github.com/saman-jafari/correlation-id-traefik"
-#      - "--experimental.plugins.correlation.version=v0.2.0"
+#      - "--experimental.plugins.correlation.version=v1.0.1"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.web.http.middlewares=correlation@docker" # you can use this for global middleware activation on web
       - "--entrypoints.websecure.http.middlewares=correlation@docker" # you can use this for global middleware activation on websecure
